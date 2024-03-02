@@ -4,24 +4,8 @@ def input_error(func):
             return func(*args, **kwargs)
         except ValueError:
             return "Give me name and phone please."
-
-    return inner
-
-
-def key_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
         except KeyError:
             return "Enter valid username."
-
-    return inner
-
-
-def index_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
         except IndexError:
             return "Enter username."
 
@@ -50,8 +34,7 @@ def show_all_contacts(contacts):
     return '\n'.join(formatted_contacts)
 
 
-@key_error
-@index_error
+@input_error
 def show_phone(contacts, args):
     username = args[0]
     return contacts[username]
