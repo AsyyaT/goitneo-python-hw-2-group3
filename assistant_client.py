@@ -39,8 +39,7 @@ class Record:
                 self.phones.remove(el)
 
     def edit_phone(self, old_number, new_number):
-        phones = [p.value for p in self.phones]
-        if old_number in phones:
+        if old_number in [p.value for p in self.phones]:
             self.remove_phone(old_number)
             self.add_phone(new_number)
 
